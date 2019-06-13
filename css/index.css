@@ -1,0 +1,47 @@
+#seats-map-container {
+    width: calc(100vw - 250px);
+    margin-left: 250px;
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#seats-map {
+    font-size: 16px;
+    margin-right: 100px;    /* Used to center content */
+}
+
+#seats-map tr td {
+    text-align: center;
+    padding: 4px;
+}
+
+#seats-map tr td p {
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+    background-color: #8fff59;
+}
+
+#seats-map.auth tr td p {
+    cursor: pointer;
+}
+
+#seats-map.auth p.selected {
+    background-color: yellow;
+}
+
+#seats-map.auth p.booked {
+    background-color: orange;
+}
+
+#seats-map.auth p.bought {
+    background-color: red;
+    cursor: initial;
+}
+
+/* Seats stat text container */
+#counters {
+    width: 150px;
+}
