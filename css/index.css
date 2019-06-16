@@ -24,7 +24,7 @@
     background-color: #8fff59;
 }
 
-#seats-map.auth tr td p {
+#seats-map.auth tr td p:not(.bought) {
     cursor: pointer;
 }
 
@@ -32,16 +32,33 @@
     background-color: yellow;
 }
 
-#seats-map.auth p.booked {
+#seats-map p.booked {
     background-color: orange;
 }
 
-#seats-map.auth p.bought {
+#seats-map p.bought {
     background-color: red;
     cursor: initial;
 }
 
+#status-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
+
+#status-header svg {
+    width: 30px;
+    height: 30px;
+    display: inline;
+    fill: #8fff59;
+}
+
 /* Seats stat text container */
-#counters {
+#status-container {
     width: 150px;
+    display: flex;
+    flex-direction: column;
 }

@@ -4,10 +4,10 @@ $(document).ready(function () {
     password_field = $('#password');
 
     email_field.change(function () {
-        if (!checkEmail($(this).val())) {
-            this.setCustomValidity('Inserisci un indirizzo email valido.');
-        }
-        else this.setCustomValidity('');
+       if (!checkEmail($(this).val())) {
+           this.setCustomValidity('Inserisci un indirizzo email valido.');
+       }
+       else this.setCustomValidity('');
     });
 
     password_field.change(function () {
@@ -17,7 +17,7 @@ $(document).ready(function () {
         else this.setCustomValidity('');
     });
 
-    $('#login-container form').submit(function (e) {
+    $('#register-container form').submit(function (e) {
 
         var valid = true;
 
