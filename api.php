@@ -141,7 +141,7 @@ if ( $_POST['method'] === 'GET' && $_POST['request'] === getPlaneStatus ) {
 			// Else rollback whole transaction
 			foreach ( $_POST['seats'] as $seat ) {
 				// Check if seat is valid
-				$col_i = ord(substr( $seat, 0, 1 )) - ord('A') + 1;
+				$col_i = ord( substr( $seat, 0, 1 ) ) - ord( 'A' ) + 1;
 				$row_i = substr( $seat, 1, strlen( $seat ) - 1 );
 
 				// Get current seat status
@@ -167,6 +167,14 @@ if ( $_POST['method'] === 'GET' && $_POST['request'] === getPlaneStatus ) {
 					// If it's been bought or booked by someone else, fail!
 					$conn->rollback();
 					$conn->autocommit( true );
+
+					// Clear all bookings from this user
+					if ( ! free_booked_seats( $conn, $_SESSION['EMAIL'] ) ) {
+						$conn->close();
+
+						api_error( 500, "Internal Server Error." );
+					}
+
 					$conn->close();
 
 					api_response( array(
@@ -178,7 +186,7 @@ if ( $_POST['method'] === 'GET' && $_POST['request'] === getPlaneStatus ) {
 			// Foreach ended without errors - all seats bought
 			// Commit transaction
 			$conn->commit();
-			$conn->autocommit(true);
+			$conn->autocommit( true );
 			$conn->close();
 			api_response( array(
 				'bought' => 1

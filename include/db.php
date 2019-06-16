@@ -185,8 +185,29 @@ function book_buy_seat( mysqli $conn, $row_i, $col_i, $user, $row_present, $stat
 
 }
 
-function buy_seat( mysqli $conn, $row_i, $col_i, $user, $row_present ) {
+function free_booked_seats( mysqli $conn, $user ) {
+	$stmt = $conn->prepare( "DELETE FROM " . DB_BOOKINGS_TABLE . " WHERE user=? AND status=?" );
 
+	if ( $stmt ) {
+
+		// Used intval() because DB_STATUS_BOOKED is a constant and cannot be passed to bind_param
+		$stmt->bind_param( "si", $user, intval( DB_STATUS_BOOKED ) );
+
+		if ( $stmt->execute() ) {
+
+			$stmt->close();
+
+			return true;
+
+		} else {
+			$stmt->close();
+
+			return false;
+		}
+
+	} else {
+		return false;
+	}
 }
 
 function lock_bookings_table( mysqli $conn ) {

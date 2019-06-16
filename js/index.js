@@ -145,7 +145,11 @@ function seatSelected() {
 }
 
 function buySeats() {
-    console.log("BUY " + selected);
+
+    if (selected.length < 1) {
+        alert("Prenota almeno un posto per poter acquistare.");
+        return;
+    }
 
     $.ajax(apiURL, {
         dataType: 'json',
