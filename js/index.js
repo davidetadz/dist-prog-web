@@ -1,4 +1,4 @@
-const apiURL = '/api.php';
+const apiURL = './api.php';
 const getPlaneStatus = 'REQ_PLANE_STATUS';
 const bookSeat = 'REQ_BOOK_SEAT';
 const freeSeat = 'REQ_FREE_SEAT';

@@ -11,5 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	$_SESSION = array();
 	session_destroy();
 	http_response_code( 302 );
-	header( 'Location: ' . 'https://' . $_SERVER['HTTP_HOST'] );
+	header( 'Location: ' . 'https://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']) );
 } else http_response_code(400);

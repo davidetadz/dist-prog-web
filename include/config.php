@@ -3,18 +3,16 @@
 if (!defined('REQUEST_OK'))
 	exit();
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 /* Database Configuration */
 
-const DB_URL = '127.0.0.1';
-const DB_NAME = 'distprog';
-const DB_USER = 'root';
-const DB_PASSWORD = '';
+const DB_URL = 'localhost';
+const DB_NAME = 's267612';
+const DB_USER = 's267612';
+const DB_PASSWORD = 'rtskinah';
 
-const DB_CONFIG_TABLE = 'config';
 const DB_USERS_TABLE = 'users';
 const DB_BOOKINGS_TABLE = 'bookings';
 
@@ -56,8 +54,6 @@ if ( empty( $_SERVER['HTTPS'] ) || $_SERVER['HTTPS'] === "off" ) {
 
 	header('HTTP/1.1 301 Moved Permanently');
 	header('Location: ' . $redirect);
-
-	//TODO: Destroy session and cookie
 
 	exit();
 }

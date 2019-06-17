@@ -10,7 +10,7 @@ include_once 'include/session.php';
 // Redirect to personal home if already logged in
 if  (isset($_SESSION['LOGGED_IN']) && $_SESSION['LOGGED_IN']) {
 	http_response_code( 302 );
-	header( 'Location: ' . 'https://' . $_SERVER['HTTP_HOST'] );
+	header( 'Location: ' . 'https://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']));
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST)
             $_SESSION['LOGGED_IN'] = true;
             $_SESSION['EMAIL'] = $email;
 	        http_response_code( 302 );
-	        header( 'Location: ' . 'https://' . $_SERVER['HTTP_HOST'] );
+	        header( 'Location: ' . 'https://' . $_SERVER['HTTP_HOST'] . dirname( $_SERVER['REQUEST_URI'] ));
         } else {
             // User already registered - error while inserting data into DB
             $error_msg = 'Esiste già un utente associato a questo indirizzo email.';
