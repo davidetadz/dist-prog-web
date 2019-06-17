@@ -74,8 +74,7 @@ function get_seat_status( mysqli $conn, $row_i, $col_i ) {
 	}
 
 	// Removed COUNT(*) from this line because it generates an error on DP server
-	//  So now need to find a way to count number of rows
-	//  because if select returns empty result seat is free (NO empty seats in DB)
+	//  if select returns empty result seat is free (NO empty seats in DB)
 	//  otherwise seat can be booked or bought
 	$stmt = $conn->prepare( "SELECT status, user FROM " . DB_BOOKINGS_TABLE . " WHERE row=? AND letter=?" );
 
@@ -87,10 +86,8 @@ function get_seat_status( mysqli $conn, $row_i, $col_i ) {
 
 			$stmt->bind_result($row_status, $row_email );
 
-			$stmt->fetch();
-
-			// Check this line! Probably it doesn't work
-			if ( $stmt->num_rows <= 0 ) {
+			// fetch returns false if no more rows
+			if ( $stmt->fetch() === null ) {
 				$stmt->close();
 
 				return RES_SEAT_FREE;
