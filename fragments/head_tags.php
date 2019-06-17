@@ -30,6 +30,9 @@ global $page_name;
 </head>
 
 <body>
+<noscript>
+    Attenzione! Javascript non è abilitato, il sito potrebbe non funzionare.<br/><b>Attiva javascript</b> per utilizzare il sito correttamente.
+</noscript>
 <header>
     <h1 id="site-name">AirPoli</h1>
     <?php if(isset($_SESSION['LOGGED_IN']) && $_SESSION['LOGGED_IN']) { ?>

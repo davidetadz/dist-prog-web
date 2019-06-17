@@ -206,9 +206,28 @@ form .btn-container input:hover {
     outline: -webkit-focus-ring-color auto 0;
 }
 
-p.error {
-    background-color: #ff000033;
+p.error, noscript, #nocookie p {
+    background-color: #ffcccc;
     padding: 5px 10px;
     margin-bottom: 1.5rem;
     text-align: center;
+}
+
+noscript {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#nocookie {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
