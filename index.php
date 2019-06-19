@@ -23,12 +23,14 @@ include( 'fragments/nav.php' );
     <div id="seats-map-container">
         <table id="seats-map" <?= ( isset( $_SESSION['LOGGED_IN'] ) && $_SESSION['LOGGED_IN'] ) ? 'class="auth"' : '' ?>></table>
         <div id="status-container">
+            <?php if (!isset($_SESSION['LOGGED_IN']) || !$_SESSION['LOGGED_IN']) { ?>
             <div id="counters">
                 <p>Posti Totali: <span id="total-n"></span></p>
                 <p>Posti Acquistati: <span id="bought-n"></span></p>
                 <p>Posti Prenotati: <span id="booked-n"></span></p>
                 <p>Posti Liberi: <span id="free-n"></span></p>
             </div>
+            <?php } ?>
             <p id="status-header">
                 <svg version="1.1" viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg">
                     <g fill="none" fill-rule="evenodd">

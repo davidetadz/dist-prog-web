@@ -178,7 +178,9 @@ if ( $_POST['method'] === 'GET' && $_POST['request'] === getPlaneStatus ) {
 					$conn->close();
 
 					api_response( array(
-						'bought' => 0
+						'bought'      => 0,
+						'seat'        => $seat,
+						'seat_status' => $status
 					) );
 				}
 			}

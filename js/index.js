@@ -125,7 +125,7 @@ function seatSelected() {
                         alert("Errore nella prenotazione del posto. I dati visualizzati potrebbero non essere aggiornati.");
                         break;
                 }
-                console.log(selected);
+
                 updateCounters();
             } else if (res.status === 401) {
                 alert("Sessione scaduta. Effettua nuovamente il login");
@@ -166,7 +166,17 @@ function buySeats() {
                 if (res.data.bought === 1) {
                     alert("Posti " + selected + " acquistati!");
                 } else {
-                    alert("Impossibile acquistare i posti selezionati!");
+                    switch (res.data.seat_status) {
+                        case 2:
+                            seat_status = "prenotato da un altro utente.";
+                            break;
+                        case 3:
+                            seat_status = "stato acquistato da un altro utente.";
+                            break;
+                        default:
+                            seat_status = "non disponibile.";
+                    }
+                    alert("Impossibile acquistare i posti selezionati! Il posto " + res.data.seat + " è " + seat_status);
                 }
                 // Refresh the page
                 window.location.reload();

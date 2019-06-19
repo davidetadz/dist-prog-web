@@ -10,7 +10,7 @@ function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
     // Header contains seats number
     for (j = 0; j < n_cols; j++) {
         var cell = document.createElement("th");
-        cell.innerText = String.fromCharCode('A'.charCodeAt(0) + j);
+        cell.innerHTML = "<span>" + String.fromCharCode('A'.charCodeAt(0) + j) + "</span>";
         thead.appendChild(cell);
     }
     mapContainer.appendChild(thead);
@@ -21,7 +21,7 @@ function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
 
         // First cell contains letter
         var fcell = document.createElement("td");
-        fcell.innerText = i;
+        fcell.innerHTML = "<span>" + i + "</span>";
         row.appendChild(fcell);
 
         for (j = 1; j < n_cols + 1; j++) {
@@ -66,7 +66,7 @@ function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
 
         // Last cell contains letter
         var lcell = document.createElement("td");
-        lcell.innerText = i;
+        lcell.innerHTML = "<span>" + i + "</span>";
         row.appendChild(lcell);
 
         mapContainer.appendChild(row);
