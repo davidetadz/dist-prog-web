@@ -1,15 +1,15 @@
 function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
-    let mapContainer = document.getElementById('seats-map');
-    let i, j;
+    var mapContainer = document.getElementById('seats-map');
+    var i, j;
 
     // Create header row with first cell empty
-    let thead = document.createElement("tr");
-    let cell = document.createElement("th");
+    var thead = document.createElement("tr");
+    var cell = document.createElement("th");
     thead.appendChild(cell);
 
     // Header contains seats number
     for (j = 0; j < n_cols; j++) {
-        let cell = document.createElement("th");
+        var cell = document.createElement("th");
         cell.innerText = String.fromCharCode('A'.charCodeAt(0) + j);
         thead.appendChild(cell);
     }
@@ -17,21 +17,21 @@ function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
 
     // Create grid of seats
     for (i = 1; i < n_rows + 1; i++) {
-        let row = document.createElement("tr");
+        var row = document.createElement("tr");
 
         // First cell contains letter
-        let fcell = document.createElement("td");
+        var fcell = document.createElement("td");
         fcell.innerText = i;
         row.appendChild(fcell);
 
         for (j = 1; j < n_cols + 1; j++) {
-            let cell = document.createElement("td");
-            let content = document.createElement("p");
+            var cell = document.createElement("td");
+            var content = document.createElement("p");
             content.row = i;
             content.col = j;
             content.status = -1;
 
-            let seat_name = String.fromCharCode('A'.charCodeAt(0) + j - 1) + i;
+            var seat_name = String.fromCharCode('A'.charCodeAt(0) + j - 1) + i;
 
             // Seat status
             if (i in seats_status && j in seats_status[i])
@@ -65,7 +65,7 @@ function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
         }
 
         // Last cell contains letter
-        let lcell = document.createElement("td");
+        var lcell = document.createElement("td");
         lcell.innerText = i;
         row.appendChild(lcell);
 
@@ -76,8 +76,8 @@ function createSeatsMap(n_rows, n_cols, seats_status, booked_seats) {
 
 function checkPassword(password) {
 
-    const n_re = /([a-z]+)/;
-    const c_re = /([0-9A-Z]+)/;
+    var n_re = /([a-z]+)/;
+    var c_re = /([0-9A-Z]+)/;
 
     /* At least one number and at least one char (upper or lower case)
     *  so with both expressions we should find at least one match */
@@ -95,7 +95,7 @@ function checkEmail(email) {
 
     // As per the HTML5 Specification with one correction - required also domain with dot
     // (so @localhost or @something won't work)
-    const email_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
+    var email_re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/;
 
     return email.match(email_re) != null;
 

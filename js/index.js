@@ -1,13 +1,13 @@
-const apiURL = './api.php';
-const getPlaneStatus = 'REQ_PLANE_STATUS';
-const bookSeat = 'REQ_BOOK_SEAT';
-const freeSeat = 'REQ_FREE_SEAT';
-const buySeat = 'REQ_BUY_SEATS';
+var apiURL = './api.php';
+var getPlaneStatus = 'REQ_PLANE_STATUS';
+var bookSeat = 'REQ_BOOK_SEAT';
+var freeSeat = 'REQ_FREE_SEAT';
+var buySeat = 'REQ_BUY_SEATS';
 
-let plane_width = 0, plane_length = 0;
+var plane_width = 0, plane_length = 0;
 
-let selected = [];
-let free_n = 0, booked_n = 0, bought_n = 0, total_n = 0;
+var selected = [];
+var free_n = 0, booked_n = 0, bought_n = 0, total_n = 0;
 
 // Callback on document completely loaded
 $(document).ready(function () {
@@ -26,7 +26,7 @@ $(document).ready(function () {
                 plane_width = res.data.plane_width;
                 plane_length = res.data.plane_length;
 
-                let seats_notfree = res.data.seats_status;
+                var seats_notfree = res.data.seats_status;
 
                 total_n = plane_width * plane_length;
 
@@ -52,8 +52,8 @@ $(document).ready(function () {
 });
 
 function seatSelected() {
-    let req;
-    let elem = $(this);
+    var req;
+    var elem = $(this);
 
     if ($(this).hasClass('selected')) {
         req = freeSeat;
@@ -62,17 +62,17 @@ function seatSelected() {
     /* Return index of element's column (relative to its row)
         (1-based because first column is list of numbers)
      */
-    let col_i = $(this)[0].col;
+    var col_i = $(this)[0].col;
 
     /* Return index of row
         (1-based because first row is list of letters)
     */
-    let row_i = $(this)[0].row;
+    var row_i = $(this)[0].row;
 
     // P tag for displaying status of last operation
-    let status_text = $('#status');
+    var status_text = $('#status');
 
-    let seat_name = String.fromCharCode('A'.charCodeAt(0) + col_i - 1) + row_i;
+    var seat_name = String.fromCharCode('A'.charCodeAt(0) + col_i - 1) + row_i;
 
     // Book selected seat or free if booked
     $.ajax(apiURL, {
